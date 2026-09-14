@@ -85,37 +85,51 @@ No VS Code, basta abrir `Main.java` e clicar em **Run**.
 
 ## Declaração de uso de Inteligência Artificial
 
-Conforme solicitado no enunciado, declaro o uso de IA na realização deste exercício.
+Conforme exigido no enunciado, declaro o uso de IA na realização deste exercício.
 
 **Modelo utilizado:** Claude Opus 5 (Anthropic), através do Claude Cowork.
 
-**Como foi utilizada:** a IA foi usada como tutor, em formato passo a passo. O código
-foi construído de forma incremental, classe por classe, com explicação do conceito
-antes de cada etapa. Eu escrevi e salvei os arquivos, e a cada classe concluída a IA
-revisava, apontava os erros e explicava o motivo de cada correção.
+**Formato de uso:** tutoria passo a passo, e não geração do projeto pronto. A IA leu o
+PDF do enunciado e os slides das aulas, explicou como cada elemento do diagrama UML se
+traduz em código Java, e a cada etapa propôs o código da classe correspondente
+acompanhado da explicação do porquê de cada decisão. Eu escrevi e salvei todos os
+arquivos, executei o programa e corrigi os erros apontados nas revisões. Nenhuma classe
+foi incorporada ao projeto sem que eu entendesse o que ela faz.
 
-**Prompts utilizados (resumo):**
+**Decisões que foram minhas ao longo do processo:**
 
-1. *"Analise o arquivo .pdf Projeto - PCMania, me ajude a construir o projeto do zero,
-   você deve caminhar comigo até o resultado final, cumprindo com aquilo que se pede no
-   pdf, analise também os slides das aulas de acordo com o tipo de material de estudo
-   necessário em cada uma das etapas, você escolhe por onde iremos começar, seja
-   didático mas vamos sem enrolação."*
-2. *"Verifique"* / *"feito, confira"* — usado a cada etapa concluída, para que a IA
-   lesse os arquivos, compilasse o projeto e apontasse erros.
-3. *"Revise o código"* — revisão final completa, comparando o código com cada exigência
-   do PDF e com o diagrama UML.
-4. *"Eu realmente não vejo as promoções antes de escolher?"* — questionamento sobre a
-   interface de compra.
+- Questionei a interface de compra ("eu realmente não vejo as promoções antes de
+  escolher?"), o que levou à discussão sobre exibir a configuração de cada promoção
+  antes do menu.
+- Decidi **não** implementar essa exibição prévia, por entender que o enunciado pede
+  apenas "uma interface simples de compra, perguntando ao cliente qual PC de qual
+  promoção deseja comprar" — a funcionalidade extra não era requisito.
+- Decidi não alterar o código depois que ele passou a cumprir integralmente o que o
+  enunciado pede, evitando refatorações que não agregavam à entrega.
 
-**Erros que eu cometi e foram corrigidos ao longo do processo:** chave de abertura
-posicionada incorretamente no construtor de `Computador`; impressão do sistema
-operacional e da memória USB dentro do laço `for` dos hardwares (o que causaria
-repetição); `lenght` no lugar de `length`; e chamada de `getPreco()` no array inteiro
-em vez do elemento indexado (`computadores[i]`).
+**Prompts utilizados:** o prompt inicial, que define o formato de todo o trabalho, foi:
 
-**O resultado foi satisfatório?** Sim. O ganho principal não foi o código pronto, e sim
-a explicação do *porquê* de cada decisão — especialmente a tradução do diagrama UML em
-atributos (losango de composição virando array ou referência única), a diferença entre
-`array` e `array[i]`, e o motivo de `static` no método utilitário. Os erros que cometi
-foram corrigidos com explicação da causa, e não apenas com o código substituído.
+> *"Analise o arquivo .pdf Projeto - PCMania, me ajude a construir o projeto do zero,
+> você deve caminhar comigo até o resultado final, cumprindo com aquilo que se pede no
+> pdf, analise também os slides das aulas de acordo com o tipo de material de estudo
+> necessário em cada uma das etapas, você escolhe por onde iremos começar, seja
+> didático mas vamos sem enrolação."*
+
+Os demais foram pedidos pontuais de verificação e revisão a cada classe concluída
+(para que a IA lesse os arquivos salvos, compilasse o projeto e apontasse erros),
+questionamentos sobre a interface de compra e a decisão de encerrar as alterações
+quando o código passou a cumprir integralmente o enunciado.
+
+**Erros que cometi e corrigi durante o processo:** chave de abertura posicionada
+incorretamente na assinatura do construtor de `Computador`; impressão do sistema
+operacional e da memória USB dentro do laço `for` dos hardwares, o que causaria
+repetição a cada iteração; `lenght` no lugar de `length`; e chamada de `getPreco()`
+sobre o array inteiro em vez do elemento indexado (`computadores[i]`). Em todos os
+casos a IA apontou o erro e explicou a causa, e a correção foi feita por mim.
+
+**O resultado foi satisfatório?** Sim. O ganho principal não foi o código em si, e sim
+a compreensão do *porquê* de cada decisão de modelagem: a tradução do diagrama UML em
+atributos (o losango de composição virando array ou referência única), a diferença
+entre `array` e `array[i]`, o motivo de `static` no método utilitário, e por que a
+`MemoriaUSB` nasce `null` em vez de vir pelo construtor. São conceitos que eu consigo
+explicar e reaplicar sem a ferramenta.
